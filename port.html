@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bosco Unisex Salon — Portfolio</title>
+
+  <!-- Material Symbols & Tailwind CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Elegant minimal accent */
+    :root{
+      --gold:#D4AF37;
+      --bg:#ffffff;
+      --muted:#6b7280;
+    }
+
+    /* Lightbox */
+    .lightbox-bg{ background: rgba(0,0,0,0.8); }
+
+    /* Before/after slider */
+    .ba-container{ position:relative; overflow:hidden; border-radius:0.75rem; }
+    .ba-before, .ba-after{ display:block; width:100%; height:100%; object-fit:cover; }
+    .ba-after{ position:absolute; top:0; left:0; width:50%; overflow:hidden; }
+    .ba-handle{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:3px; height:100%; background:rgba(255,255,255,0.6); z-index:20; }
+    .ba-handle:after{ content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; }
+    .ba-handle-dot{ width:10px; height:10px; background:var(--gold); border-radius:50%; display:block; margin:auto; }
+
+    /* Responsive tweaks */
+    @media (max-width:640px){
+      .ba-handle{ height:100%; width:2px; }
+    }
+
+    /* Smooth scrolling */
+    html{ scroll-behavior:smooth; }
+
+    /* Make material symbols respect color */
+    .material-symbols-outlined{ font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center">
+            <span class="text-white font-bold">B</span>
+          </div>
+          <div>
+            <div class="text-lg font-semibold">Bosco Unisex Salon</div>
+            <div class="text-xs text-gray-500">Portfolio</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#gallery" class="text-sm hover:text-black/80">Gallery</a>
+          <a href="#beforeafter" class="text-sm hover:text-black/80">Transformations</a>
+          <a href="#team" class="text-sm hover:text-black/80">Stylists</a>
+          <a href="#pricing" class="text-sm hover:text-black/80">Pricing</a>
+          <a href="#contact" class="text-sm bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black border border-black transition">Book Now</a>
+        </nav>
+
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded-md border border-gray-200">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-12 pb-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center gap-10">
+      <!-- Left: text -->
+      <div class="lg:w-1/2 text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Our Work Speaks Style</h1>
+        <p class="text-gray-600 mb-6 max-w-xl">
+          Explore our curated gallery of haircuts, colour transformations and beauty services. Each look is crafted by our expert stylists to match your personality and lifestyle.
+        </p>
+        <div class="flex justify-center lg:justify-start gap-4">
+          <a href="#gallery" class="inline-flex items-center gap-2 px-6 py-3 border border-black text-black rounded-md hover:bg-black hover:text-white transition">
+            <span class="material-symbols-outlined">photo_library</span> View Gallery
+          </a>
+          <a href="appointment.html" class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-md hover:bg-white hover:text-black border border-black transition">
+            <span class="material-symbols-outlined">calendar_month</span> Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: small hero image -->
+      <div class="lg:w-1/2 flex justify-center lg:justify-end">
+        <div class="w-[320px] h-[420px] rounded-2xl overflow-hidden shadow-xl">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1200&auto=format&fit=crop" alt="Hero" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="bg-white pb-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-center">
+        <div id="filters" class="inline-flex items-center gap-3 flex-wrap">
+          <button data-filter="all" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm font-medium bg-black text-white">All</button>
+          <button data-filter="haircut" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Haircuts</button>
+          <button data-filter="color" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Colour</button>
+          <button data-filter="braids" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Braids</button>
+          <button data-filter="nails" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Nails</button>
+          <button data-filter="beard" class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Barber</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card (repeatable) -->
+        <!-- Example items - replace src with your images -->
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="haircut">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" aria-label="Open image">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Classic Bob</h4>
+            <p class="text-sm text-gray-500">Precision cut with soft layers.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="color">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Warm Balayage</h4>
+            <p class="text-sm text-gray-500">Soft blend and natural finish.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="braids">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1601597115412-2b6ef2d1b6c9?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1601597115412-2b6ef2d1b6c9?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Box Braids</h4>
+            <p class="text-sm text-gray-500">Long-lasting protective style.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="nails">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Minimal Mani</h4>
+            <p class="text-sm text-gray-500">Neutral tones and neat finish.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="beard">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1598136497757-ee8a7d4c0d3c?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1598136497757-ee8a7d4c0d3c?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Precision Fade & Beard</h4>
+            <p class="text-sm text-gray-500">Sharp lines and tidy finish.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="color">
+          <button class="w-full h-64 block" data-src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
+          </button>
+          <div class="p-4">
+            <h4 class="font-semibold mb-1">Platinum Tone</h4>
+            <p class="text-sm text-gray-500">High-lift colour services.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After -->
+  <section id="beforeafter" class="py-12 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-6">Transformations — Before & After</h2>
+
+      <div class="ba-container h-[420px] mx-auto max-w-4xl relative">
+        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1600&auto=format&fit=crop" class="ba-before w-full h-full" alt="Before">
+        <div class="ba-after" id="baAfter" style="width:50%;">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600&auto=format&fit=crop" class="w-full h-full" alt="After">
+        </div>
+        <div class="ba-handle" id="baHandle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="ba-handle-dot"></span>
+        </div>
+      </div>
+
+      <p class="text-center text-gray-500 mt-4">Drag the handle or click images to compare before and after results.</p>
+    </div>
+  </section>
+
+  <!-- Stylists / Team -->
+  <section id="team" class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-6">Our Stylists</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Stylist card -->
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Stylist" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-semibold">Irene</h3>
+          <p class="text-sm text-gray-500">Senior Stylist — Colour Specialist</p>
+          <p class="mt-3 text-xs text-gray-400">10+ years experience</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1545996124-0b2f8c6a58f1?q=80&w=800&auto=format&fit=crop" alt="Stylist" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-semibold">Samuel</h3>
+          <p class="text-sm text-gray-500">Barber — Fade Expert</p>
+          <p class="mt-3 text-xs text-gray-400">8 years experience</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Stylist" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-semibold">Maya</h3>
+          <p class="text-sm text-gray-500">Nail Artist & Aesthetician</p>
+          <p class="mt-3 text-xs text-gray-400">6 years experience</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1545996124-0b2f8c6a58f1?q=80&w=800&auto=format&fit=crop" alt="Stylist" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-semibold">Daniel</h3>
+          <p class="text-sm text-gray-500">Stylist — Texture Specialist</p>
+          <p class="mt-3 text-xs text-gray-400">7 years experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Snapshot -->
+  <section id="pricing" class="py-12 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-6">Pricing Snapshot</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-gray-50 rounded-xl p-6 text-center">
+          <h3 class="font-semibold mb-2">Haircuts</h3>
+          <p class="text-gray-500 mb-4">From UGX 15,000</p>
+          <ul class="text-sm text-gray-400 space-y-1">
+            <li>Men's Cut</li>
+            <li>Women's Cut</li>
+            <li>Kids</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center">
+          <h3 class="font-semibold mb-2">Colour</h3>
+          <p class="text-gray-500 mb-4">From UGX 50,000</p>
+          <ul class="text-sm text-gray-400 space-y-1">
+            <li>Highlights</li>
+            <li>Balayage</li>
+            <li>Colour Correction</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center">
+          <h3 class="font-semibold mb-2">Beauty</h3>
+          <p class="text-gray-500 mb-4">From UGX 20,000</p>
+          <ul class="text-sm text-gray-400 space-y-1">
+            <li>Manicure</li>
+            <li>Pedicure</li>
+            <li>Facials</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="py-6 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+        <div class="px-4 py-2 bg-white rounded-lg shadow-sm">Best Salon — Lira 2024</div>
+        <div class="px-4 py-2 bg-white rounded-lg shadow-sm">Certified Colourists</div>
+        <div class="px-4 py-2 bg-white rounded-lg shadow-sm">10+ Years of Combined Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-black text-white rounded-2xl p-10 text-center">
+        <h2 class="text-2xl font-bold mb-3">Ready for your transformation?</h2>
+        <p class="text-gray-300 mb-6">Book an appointment with our expert stylists today.</p>
+        <a href="appointment.html" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-md hover:bg-transparent hover:text-white border border-white transition">Book Appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold">Bosco Unisex Salon</h3>
+        <p class="text-sm text-gray-500 mt-2">Premium hair and beauty services. Located in Lira.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold">Quick Links</h3>
+        <ul class="text-sm text-gray-500 mt-2 space-y-2">
+          <li><a href="index.html#book-now-section" class="hover:text-black">Book Now</a></li>
+          <li><a href="#gallery" class="hover:text-black">Portfolio</a></li>
+          <li><a href="#team" class="hover:text-black">Stylists</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold">Subscribe</h3>
+        <form class="mt-3 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" placeholder="Your email" class="flex-1 px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black" required>
+          <button type="submit" class="px-4 py-2 bg-black text-white rounded-md">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-200 pt-4 text-center text-sm text-gray-500">
+      &copy; <span id="year"></span> Bosco Unisex Salon. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 hidden items-center justify-center lightbox-bg z-50">
+    <button id="lbClose" class="absolute top-6 right-6 text-white text-2xl p-2 rounded-md">✕</button>
+    <div class="max-w-4xl w-full mx-4">
+      <img id="lbImage" src="" alt="Large view" class="w-full rounded-xl shadow-2xl object-contain">
+    </div>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('bg-black','text-white'));
+        btn.classList.add('bg-black','text-white');
+        const cat = btn.getAttribute('data-filter');
+        items.forEach(i=>{
+          if(cat === 'all' || i.dataset.category === cat) i.style.display = 'block';
+          else i.style.display = 'none';
+        });
+      });
+    });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbClose = document.getElementById('lbClose');
+
+    document.querySelectorAll('.portfolio-item button').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const src = b.getAttribute('data-src') || b.querySelector('img')?.src;
+        lbImage.src = src;
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
+    function closeLb(){ lb.classList.add('hidden'); lb.classList.remove('flex'); document.body.style.overflow = ''; lbImage.src=''; }
+
+    // Before/After slider
+    (function(){
+      const container = document.querySelector('.ba-container');
+      if(!container) return;
+      const after = document.getElementById('baAfter');
+      const handle = document.getElementById('baHandle');
+
+      let dragging = false;
+      const startX = e => e.touches ? e.touches[0].clientX : e.clientX;
+
+      const onMove = (clientX)=>{
+        const rect = container.getBoundingClientRect();
+        let pct = (clientX - rect.left) / rect.width;
+        pct = Math.max(0, Math.min(1, pct));
+        after.style.width = (pct*100)+'%';
+        handle.style.left = (pct*100)+'%';
+      };
+
+      handle.addEventListener('mousedown', ()=> dragging = true);
+      window.addEventListener('mouseup', ()=> dragging = false);
+      window.addEventListener('mousemove', (e)=> { if(dragging) onMove(e.clientX); });
+
+      handle.addEventListener('touchstart', ()=> dragging = true);
+      window.addEventListener('touchend', ()=> dragging = false);
+      window.addEventListener('touchmove', (e)=> { if(dragging) onMove(e.touches[0].clientX); });
+
+      // click to move
+      container.addEventListener('click', (e)=> onMove(startX(e)));
+    })();
+
+    // Mobile menu (minimal)
+    const menuBtn = document.getElementById('menuBtn');
+    if(menuBtn){
+      menuBtn.addEventListener('click', ()=>{
+        alert('Open mobile menu — integrate navigation as needed.');
+      });
+    }
+  </script>
+</body>
+</html>

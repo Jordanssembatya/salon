@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Salon Contact Us Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e6194c",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50  font-display text-white">
+      <header class="sticky top-0 z-10 ">
+
+            <nav class="bg-black text-white">
+                <div class="container mx-auto flex items-center justify-between py-4 px-6">
+
+                    <!-- Brand -->
+                    <a class="text-2xl font-bold" href="#">
+                        Bosco Unisex Salon
+                    </a>
+
+                    <!-- Mobile Toggle Button -->
+                    <button class="lg:hidden text-white focus:outline-none"
+                        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul class="hidden lg:flex space-x-8 text-sm">
+                        <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
+                        <li><a class="hover:text-gray-300" href="about.html">About</a></li>
+                        <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
+                        <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
+                        <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
+                        <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
+                    </ul>
+
+                    <!-- WhatsApp Button (Desktop) -->
+                    <a href="https://wa.me/0786650378"
+                        class="hidden lg:inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold">
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="lg:hidden hidden bg-black text-white">
+                    <ul class="flex flex-col space-y-4 py-4 px-6 text-lg">
+                        <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
+                        <li><a class="hover:text-gray-300" href="about.html">About</a></li>
+                        <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
+                        <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
+                        <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
+                        <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
+                    </ul>
+                    <!-- WhatsApp Button (Mobile) -->
+                    <div class="px-6 pb-4">
+                        <a href="https://wa.me/0786650378"
+                            class="block bg-green-500 hover:bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <!-- Top App Bar -->
+        <div
+            class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10  backdrop-blur-sm">
+            <div class="flex size-10 shrink-0 items-center justify-center">
+                <span onclick="window.location.href='index.html'"
+                    class="material-symbols-outlined text-black cursor-pointer hover:text-blue-500"
+                    style="font-size: 24px;">arrow_back_ios_new</span>
+            </div >
+            <h2 class="text-black text-2xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Contact Us
+            </h2>
+            <div class="flex size-10 shrink-0 items-center"></div>
+        </div>
+        <!-- form Section -->
+      <section class="bg-gray-100 py-16">
+  <div class="max-w-3xl mx-auto  px-4">
+    <div class="bg-white-rounded-2xl shadow-lg p-10 text-center">
+     <h2 class="text-3xl font-bold mb-4 text-gray-800">Tell us whats on your mind</h2>
+    
+    <!-- Paragraph -->
+    <p class="text-gray-600 mb-8">
+      Have a question or want to book a service? Fill out the form below and we will get back to you as soon as possible.
+    </p>
+    
+    <!-- Form -->
+    <form class="space-y-4">
+      <!-- Name & Email on same line -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input 
+          type="text" 
+          placeholder="Your Name" 
+          class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+          required>
+        <input 
+          type="email" 
+          placeholder="Your Email" 
+          class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+          required>
+      </div>
+
+      <!-- Message textarea -->
+      <textarea 
+        placeholder="Your Message" 
+        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+        rows="5" required></textarea>
+
+      <!-- Send Message button -->
+      <button 
+        type="submit" 
+        class="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200">
+        Send Message
+      </button>
+    </form>
+    </div>
+    <!-- Heading -->
+    
+  </div>
+</section>
+<section class="bg-gray-100 py-16">
+  <div class="max-w-6xl mx-auto px-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      
+      <!-- Column 1: Location -->
+      <div class="flex flex-col items-center justify-center space-y-1">
+        <!-- Icon in rounded circle -->
+        <span class="flex items-center justify-center w-12 h-12 bg-black text-white rounded-full mb-2">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+          </svg>
+        </span>
+        <h3 class="text-xl  text-gray-800">Our Location</h3>
+        <p class="text-gray-600 text-sm">Kitgum stage, Mubarak Plaza, Lira</p>
+      </div>
+
+      <!-- Column 2: Phone -->
+      <div class="flex flex-col items-center justify-center space-y-1">
+        <!-- Icon in rounded circle -->
+        <span class="flex items-center justify-center w-12 h-12 bg-black text-white rounded-full mb-2">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 6.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.32.07.71-.21 1.11l-2.43 2.3z"/>
+          </svg>
+        </span>
+        <h3 class="text-xl  text-gray-800">Call Us</h3>
+        <p class="text-gray-600 text-sm">+256 700 123 456</p>
+      </div>
+
+      <!-- Column 3: Email -->
+      <div class="flex flex-col items-center justify-center space-y-1">
+        <!-- Icon in rounded circle -->
+        <span class="flex items-center justify-center w-12 h-12 bg-black text-white rounded-full mb-2">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </span>
+        <h3 class="text-xl  text-gray-800">Email Us</h3>
+        <p class="text-gray-600 text-sm">info@boscosalon.ug</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <footer class="bg-gray-900 text-gray-200 mt-10 border-t border-gray-700 px-10 py-10">
+  <div class="max-w-7xl mx-auto px-4 py-10 ">
+     <div class="flex flex-col md:flex-row justify-center md:justify-between items-start gap-10 md:gap-20">
+    
+    <!-- About Section -->
+    
+    
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-blue-500">Home</a></li>
+        <li><a href="#" class="hover:text-blue-500">Services</a></li>
+        <li><a href="#" class="hover:text-blue-500">Pricing</a></li>
+        <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+      </ul>
+    </div>
+    
+    <!-- Contact Info -->
+    <div>
+  <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+  <ul class="space-y-3 text-sm">
+    <!-- Location -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+      </span>
+      Kitgum stage, Mubarak Plaza, Lira
+    </li>
+
+    <!-- Phone -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 6.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.32.07.71-.21 1.11l-2.43 2.3z"/>
+        </svg>
+      </span>
+      +256 700 123 456
+    </li>
+
+    <!-- Email -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </span>
+      info@boscosalon.ug
+    </li>
+  </ul>
+</div>
+
+    
+    <!-- Newsletter / Follow Us -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-white">Subscribe & Follow Us</h3>
+      
+      <!-- Newsletter Input -->
+      <form class="flex flex-col sm:flex-row gap-2 mb-4">
+        <input type="email" placeholder="Your email"
+               class="w-full sm:flex-1 px-3 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">
+          Subscribe
+        </button>
+      </form>
+      
+      <!-- Social Icons -->
+      
+    </div>
+</div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
+    &copy; 2025 Bosco Unisex Salon. All rights reserved.
+  </div>
+</footer>
+
+
+</body>
+
+</html>

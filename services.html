@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salon Services Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+             primary: {
+                            50: '#fde2e7',  // very light
+                            100: '#fbb8c6',
+                            200: '#f78ca1',
+                            300: '#f4607c',
+                            400: '#f1365b',
+                            500: '#e6194c', // your original primary color
+                            600: '#c21542',
+                            700: '#9e1036',
+                            800: '#780b29',
+                            900: '#52071c', // darkest shade
+                        },
+              "background-light": "#f8f6f6",
+              "background-dark": "#121212",
+              "surface-dark": "#1E1E1E",
+              "text-light-primary": "#121212",
+              "text-light-secondary": "#6b7280",
+              "text-dark-primary": "#EAEAEA",
+              "text-dark-secondary": "#A0A0A0",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "0.75rem",
+              "xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-size: 24px;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display ">
+        
+
+           <nav class="bg-black text-white">
+                <div class="container mx-auto flex items-center justify-between py-4 px-6">
+
+                    <!-- Brand -->
+                    <a class="text-2xl font-bold" href="#">
+                        Bosco Unisex Salon
+                    </a>
+
+                    <!-- Mobile Toggle Button -->
+                    <button class="lg:hidden text-white focus:outline-none"
+                        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul class="hidden lg:flex space-x-8 text-sm">
+                        <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
+                        <li><a class="hover:text-gray-300" href="about.html">About</a></li>
+                        <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
+                        <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
+                        <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
+                        <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
+                    </ul>
+
+                    <!-- WhatsApp Button (Desktop) -->
+                    <a href="https://wa.me/0786650378"
+                        class="hidden lg:inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold">
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="lg:hidden hidden bg-black text-white">
+                    <ul class="flex flex-col space-y-4 py-4 px-6 text-lg">
+                        <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
+                        <li><a class="hover:text-gray-300" href="about.html">About</a></li>
+                        <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
+                        <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
+                        <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
+                        <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
+                    </ul>
+                    <!-- WhatsApp Button (Mobile) -->
+                    <div class="px-6 pb-4">
+                        <a href="https://wa.me/0786650378"
+                            class="block bg-green-500 hover:bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+        
+<div class="relative w-full min-h-screen">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center justify-center size-12 shrink-0 text-text-light-primary dark:text-dark-primary">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h1 class="text-xl font-bold leading-tight tracking-tight text-text-light-primary dark:text-dark-primary">Our Services</h1>
+<div class="flex items-center justify-center size-12 shrink-0 text-text-light-primary dark:text-dark-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+</div>
+<!-- Chips / Category Filters -->
+<div class="sticky z-10 px-4 py-2 top-20 bg-background-light dark:bg-background-dark">
+<div class="flex gap-2 pb-2 overflow-x-auto no-scrollbar">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 text-sm font-medium text-white">All</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-surface-dark px-5 text-sm font-medium text-text-light-primary dark:text-dark-primary">Hair</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-surface-dark px-5 text-sm font-medium text-text-light-primary dark:text-dark-primary">Nails</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-surface-dark px-5 text-sm font-medium text-text-light-primary dark:text-dark-primary">Skincare</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-surface-dark px-5 text-sm font-medium text-text-light-primary dark:text-dark-primary">Makeup</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-surface-dark px-5 text-sm font-medium text-text-light-primary dark:text-dark-primary">Waxing</button>
+</div>
+</div>
+<main class="flex flex-col gap-6 px-4 py-4">
+<!-- Hair Section -->
+<section>
+<h2 class="px-2 pb-3 text-2xl font-bold text-text-light-primary dark:text-dark-primary">Hair</h2>
+<div class="flex flex-col gap-4">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="Close up of a stylist cutting hair with scissors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANtt6ynZOCT8WgCCx65Q9TKt2euarGCoTgiBQrSOhnxazVx4oKg3LjCsDUcbphS7L25OFOILMimMa_UP99jbSXkLDtqva-IMW0_5dRc_FxFpUei77gbUTwzLRZewyueIljR2Mp4hIafXNV1Yi5NaBIgg7l073kCVIaw1FQbWQykqdvjnoGslUF-iUBwUma5waICcYZo__QGF4yFKOfGJ7b7UiXIOrOipc_u5SU0Pu5IJfmbzsJeeQpgp5yIFhWzYF9EL5sTT5hMq8"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Haircut &amp; Style</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">Precision cut and professional styling.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $85</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="Woman with beautiful balayage hair seen from the back" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp-aykaKXa4KwkvjRR1DLWYgbKqhE_-DIK_L_t5Fx_zIzo3gGxeLc9-Xd2TJuWNWHX4EtcGyInA9Wlqfv0oWKPeUfSAXsPIrFVN4-7ZYRVmQoFOg2mah7v722ZDN7xUmnehbVTH17jwrWy2G947WSZYBFJFHOODyogYylzxQPk_M6_fY3W-2scBxOMm6SZCPiGUzHJo2HGkx9NFCkDgcGda-Kq6Ql8roV9AcGowXWXe71GbJokbbtxgh9jbmikfg9nndSi__7wZ-k"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Balayage</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">Hand-painted color for a natural look.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $250</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="Stylist applying keratin treatment to a client's long hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxHuKdriVGMJhvCk_4Z84Cw5vo6nmmuENjWp55_2iIuEbehvuyqbdI3IPoNEqyhDaFLjnuF3u9tD-XxeU3IS3ufjve-gANi5eoQm1vUVNzEBS_FSNyduHZYlwFixy5JLGkBe2XwC4g2jRVHIuKaPIQgQfisgwP_hTK4c6YI0r55QyU_0AL8FGF022mx_q0iSiSfpu0SPIPXvdwxZx8925SakNHOSQeYueLXd2TVSKF5RiHfiLwgE0rXVIlJKU_clqOL8zyOPBnHgA"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Keratin Treatment</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">Frizz-free smoothness and shine.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $300</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+</div>
+</section>
+<!-- Nails Section -->
+<section>
+<h2 class="px-2 pb-3 text-2xl font-bold text-text-light-primary dark:text-dark-primary">Nails</h2>
+<div class="flex flex-col gap-4">
+<!-- List Item 4 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="Perfectly manicured hands with a neutral gel polish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnGG_jTOJ3GlRwGF0gCap02lM5vMfXoXRL2xZz_U-YMyjpEvRSDUF8dO2jr3i8s7JIlM2D6r00UVBXJMY6ug5wgzGdJA52E5C_VSDxvm4u3l_RAQe5JhKcQzrOFuWXNoylCpv6arN8i5QJDNC247gl48N50QyJKv_WJuMzNd8OjHbT_zxYPPLmOtsRFnpPl8Wuw_-Kn3ShDS6X31J1vIITrh4QXoTgGhY8-YHGyl5DxzMyHSQArAozKiVNRKWkL_0hjCnLc_KefTo"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Gel Manicure</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">Long-lasting polish with a glossy finish.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $55</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+<!-- List Item 5 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="A relaxing pedicure scene with a foot soak and flower petals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABDOMWMourRGhQVEfcE5tea06XUyRsK1sdw4zts6BszEdOdxWK2E6yQXHKZBVat7_IKgmWBHLrlgKlws-SYghqrN6C-7GEaiNT78PIZaXhEibFPh0oeR9TUIqyuU0A-ZeaF_0h2-xazT7NaptG4tnNtB7XhXCQRAtHsVy_pSIPQ0mYCHxHikdvBvm4NqZ2ZPEMA7sd_iBvaQWH7UNoAndKFJfWouOdIRKEysEffzx6srdHBCK85FyuN14cWTVKJ_0KGEVXCjbmYIg"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Luxury Pedicure</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">A relaxing spa experience for your feet.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $75</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+</div>
+</section>
+<!-- Skincare Section -->
+<section>
+<h2 class="px-2 pb-3 text-2xl font-bold text-text-light-primary dark:text-dark-primary">Skincare</h2>
+<div class="flex flex-col gap-4">
+<!-- List Item 6 -->
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="A woman with a face mask on, looking relaxed during a facial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs-9tg59zbZsXJXgp3_LexB-YyvgyW076F2AzE-OqvWYqzEuugRmB4OIIsvgDxE77XCGrK8RxfM45eGDMfTMMwkjvLKBi7IAVhtAbQjivZdon0d3NbE3s6B65QfHUtTq6BwsBQPbt4ogvSikb9GDJzaRotdJl_rfe0f1ZdbXD1U33S3NRvBIR04ko13EzKl5nNv8yXv3f0h0gKeNXSqHBefNcKI_2FqsrWE-vAIwANc2NxgbLpgKrCFxW8oP_HSIsWYjjK5A14j4E"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Signature Facial</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">Customized to your skin's unique needs.</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From $120</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-white truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-gray-100 rounded-lg dark:bg-surface-dark">
+<img class="object-cover rounded-lg size-24 shrink-0" data-alt="A woman with a face mask on, looking relaxed during a facial" src="images/skin.jpg"/>
+<div class="flex flex-col flex-1 gap-1">
+<p class="font-semibold text-text-light-primary dark:text-dark-primary">Skin softening</p>
+<p class="text-sm text-text-light-secondary dark:text-dark-secondary">We multiply your acne by 0, giving you the glow of a cute little angel</p>
+<p class="text-sm font-medium text-text-light-secondary dark:text-dark-secondary">From Ugx.50000</p>
+</div>
+<button class="flex items-center justify-center h-10 px-5 overflow-hidden text-sm font-medium text-black hover:text-primary-700 truncate rounded-full cursor-pointer min-w-fit max-w-40 bg-primary"><span class="truncate">Book Now</span></button>
+</div>
+</div>
+</section>
+</main>
+ 
+</div>
+
+
+<footer class="bg-gray-900 text-gray-200 mt-10 border-t border-gray-700 px-10 py-10">
+  <div class="max-w-7xl mx-auto px-4 py-10 ">
+     <div class="flex flex-col md:flex-row justify-center md:justify-between items-start gap-10 md:gap-20">
+    
+    <!-- About Section -->
+    
+    
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-blue-500">Home</a></li>
+        <li><a href="#" class="hover:text-blue-500">Services</a></li>
+        <li><a href="#" class="hover:text-blue-500">Pricing</a></li>
+        <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+      </ul>
+    </div>
+    
+    <!-- Contact Info -->
+    <div>
+  <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+  <ul class="space-y-3 text-sm">
+    <!-- Location -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+        </svg>
+      </span>
+      Kitgum stage, Mubarak Plaza, Lira
+    </li>
+
+    <!-- Phone -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 6.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.32.07.71-.21 1.11l-2.43 2.3z"/>
+        </svg>
+      </span>
+      +256 700 123 456
+    </li>
+
+    <!-- Email -->
+    <li class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </span>
+      info@boscosalon.ug
+    </li>
+  </ul>
+</div>
+
+    
+    <!-- Newsletter / Follow Us -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-white">Subscribe & Follow Us</h3>
+      
+      <!-- Newsletter Input -->
+      <form class="flex flex-col sm:flex-row gap-2 mb-4 max-w-md mx-auto">
+  <!-- Email input -->
+  <input 
+    type="email" 
+    placeholder="Your email"
+    class="flex-1 px-4 py-2 rounded sm:rounded-r-none text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required>
+
+  <!-- Subscribe button -->
+  <button 
+    type="submit"
+    class="px-4 py-2 bg-blue-600 text-white rounded sm:rounded-l-none hover:bg-blue-700 transition-colors duration-200">
+    Subscribe
+  </button>
+</form>
+
+      
+      <!-- Social Icons -->
+      
+    </div>
+</div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
+    &copy; 2025 Bosco Unisex Salon. All rights reserved.
+  </div>
+</footer>
+</body></html>
