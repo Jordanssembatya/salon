@@ -1,302 +1,218 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Salon About Us Page</title>
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - Bosco Unisex Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: "#e6194c",
-                        "background-light": "#f8f6f6",
-                        "background-dark": "#211115",
+                        primary: { 500: '#ec4899', 600: '#db2777', 700: '#be185d' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b' }
                     },
-                    fontFamily: {
-                        display: ["Plus Jakarta Sans", "sans-serif"],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px",
-                    },
-                },
-            },
-        };
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
     </script>
-
     <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings:
-                "FILL" 0,
-                "wght" 400,
-                "GRAD" 0,
-                "opsz" 24;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .gradient-text { background: linear-gradient(135deg, #ec4899, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .luxury-shadow { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
     </style>
 </head>
-
-<body class="font-display bg-gray-50  text-black">
-    <div class="relative flex min-h-screen w-full flex-col">
-
-        <!-- Top App Bar -->
-        <div
-            class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 p-4 pb-2 backdrop-blur-sm dark:bg-background-dark/80">
-            <div class="flex size-12 shrink-0 items-center justify-start text-stone-900 dark:text-white">
-                <span onclick="window.location.href='index.html'"
-                    class="material-symbols-outlined cursor-pointer text-2xl hover:text-blue-500">
-                    arrow_back
-                </span>
+<body class="bg-gradient-to-br from-gray-50 via-white to-pink-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50">
+        <nav class="bg-black text-white">
+            <div class="container mx-auto flex items-center justify-between py-4 px-6">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-primary-500 to-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-xl">B</span>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-white">Bosco Unisex Salon</div>
+                        <div class="text-xs text-gray-300">Premium Beauty Experience</div>
+                    </div>
+                </a>
+                <ul class="hidden lg:flex space-x-8 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="index.html">Home</a></li>
+                    <li><a class="text-primary-400 font-semibold" href="about.html">About</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="services.html">Services</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="appointment.html">Appointment</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="contact.html">Contact</a></li>
+                </ul>
+                <div></div>
             </div>
-            <h2 class="flex-1 text-center text-lg font-bold tracking-tight text-stone-900 dark:text-white">
-                About Us
-            </h2>
-            <div class="size-12 shrink-0"></div>
-        </div>
+        </nav>
+    </header>
 
-        <!-- Hero Section (no animation) -->
-        <section id="book-now-section">
-            <div class="@container">
-                <div class="@[480px]:p-4">
-                    <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4 text-center"
-                        data-alt="Stylish interior of a modern salon with ambient lighting"
-                        style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("images/pexels-brett-sayles-1314017\ \(1\).jpg");'>
-                        <div class="flex flex-col gap-2">
-                            <h2
-                                class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl">
-                                Transforming hair, elevating style, and inspiring confidence</h2>
-                            <p class="text-white text-sm font-normal leading-normal @[480px]:text-base">
-                                Driven by creativity, precision, and care, we create looks that empower and inspire.
-                                Discover the artistry behind every style at Bosco Unisex Salon
-                            </p>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-6">About Our Salon</h1>
+            <p class="text-xl text-primary-100 max-w-2xl mx-auto">Transforming hair, elevating style, and inspiring confidence through artistry and care</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-black mb-8 gradient-text">Our Philosophy</h2>
+                <p class="text-xl text-gray-600 leading-relaxed mb-12">
+                    At Bosco Unisex Salon, we believe that beauty is an art form. Our mission is to provide an unparalleled salon experience, combining expert craftsmanship with a passion for style and a commitment to your well-being. Step in and let us craft your perfect look.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6 gradient-text">Meet Our Expert Team</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Our talented stylists bring years of experience and passion to every appointment</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-32 h-32 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl">👩‍🦰</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Jessica Lane</h3>
+                    <p class="text-primary-600 font-semibold mb-3">Lead Stylist & Founder</p>
+                    <p class="text-gray-600">With over 15 years of experience, Jessica's passion for hair artistry is the driving force behind our salon.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-32 h-32 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl">👨‍🦱</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Marcus Chen</h3>
+                    <p class="text-primary-600 font-semibold mb-3">Master Colorist</p>
+                    <p class="text-gray-600">Marcus specializes in transformative color, from subtle balayage to vibrant, creative hues.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl">👩‍🦳</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Emily Carter</h3>
+                    <p class="text-primary-600 font-semibold mb-3">Creative Stylist</p>
+                    <p class="text-gray-600">Emily excels in precision cuts and modern styling, bringing a fresh artistic perspective.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6 gradient-text">Our Values</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">✨</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Excellence</h3>
+                    <p class="text-gray-600">We strive for perfection in every service, ensuring exceptional results every time.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Care</h3>
+                    <p class="text-gray-600">Your comfort and satisfaction are our top priorities in everything we do.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">🎨</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Creativity</h3>
+                    <p class="text-gray-600">We bring artistic vision and innovation to create unique, personalized looks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-6">Ready for a Transformation?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">Let our talented team bring your vision to life. Book your next appointment and experience the difference.</p>
+            <button onclick="window.location.href='appointment.html'" class="px-8 py-4 bg-white text-primary-700 font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                Book an Appointment
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-primary-500 to-gold-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">B</span>
                         </div>
-
+                        <div>
+                            <div class="text-2xl font-bold text-white">Bosco Unisex Salon</div>
+                            <div class="text-sm text-gray-400">Premium Beauty Experience</div>
+                        </div>
                     </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Transform your look with our premium salon services. Where artistry meets luxury in the heart of Lira.</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Centered Content -->
-        <main class="mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center">
-
-            <!-- Philosophy -->
-            <section class="fade-in py-12">
-                <h2 class="mb-4 text-2xl font-bold text-black">
-                    Our Philosophy
-                </h2>
-                <p class="max-w-2xl text-base text-black ">
-                    Discover the passion, artistry, and dedication that define our salon. We believe in creating
-                    personalized experiences that celebrate individual beauty and style, making every visit
-                    unforgettable.
-                </p>
-            </section>
-
-            <!-- Divider -->
-            <div class="fade-in my-10 flex justify-center">
-                <div class="h-1 w-16 rounded-full bg-primary/30 transition-all duration-500 hover:w-24"></div>
-            </div>
-
-            <!-- Team Title -->
-            <section class="fade-in py-12">
-                <h2 class="text-2xl font-bold text-black ">
-                    Meet the Team
-                </h2>
-            </section>
-
-            <!-- Team Cards -->
-            <section class="fade-in grid w-full grid-cols-1 gap-8 py-8 sm:grid-cols-2 lg:grid-cols-3">
-
-                <div
-                    class="group flex flex-col overflow-hidden rounded-xl bg-background-light/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-white/5">
-                    <img class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBZXC1w1HLhN6Aa75H1syT2UKOU-4csPbSlET5f-FZuqB94HItQhBOGxNlS9SznmlQkznXz-yRL4X-cTuBjrLeVK4WT8MYPhYsAZVBL09z-aHzk4x5WbF9HbGm09VsdYRDkrt1LIbW3AQHl0sshL03rJm0ngAHq8F1odwq3-kSW5I8N821Rg4vEMJI8Qf6RR-olP_7Mdr55ytOzvK2I6Rf7gUAwNiAYevPI11GtPMr5fruwbg85cdcZSKfDbZXYfoKBluZOgzqN4" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-black ">Jessica Lane</h3>
-                        <p class="text-sm font-medium text-primary">Lead Stylist & Founder</p>
-                        <p class="mt-2 text-sm text-black ">
-                            With over 15 years of experience, Jessica's passion for hair artistry is the driving force
-                            behind our salon.
-                        </p>
-                    </div>
-                </div>
-
-                <div
-                    class="group flex flex-col overflow-hidden rounded-xl bg-background-light/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-white/5">
-                    <img class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9XHeWgnbqNJGcIh1Pyl5acVRxNoAycdzRdRWmn-FC4-_HJUZ8FCgikFX0ddQOtkhSY-NjYsyr9CFQ30qoCb5GVi9EMIgcNChh_Objsl1FQfRBKV45MZU4z_rmejg8m56ETnbm6bYhuG4uToXXnbBEVOSQ8cVWIoDyWSsccArFg4myd5k18vCLY2Hgxv-6HWLKKTa9vqjIFD7WjxrBLfnFxrTBa9AhkB3CiQIkDWuYELpvsjlmTACFSpQDypFj6GnUFNHA9ZY_vTg" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-black ">Marcus Chen</h3>
-                        <p class="text-sm font-medium text-primary">Master Colorist</p>
-                        <p class="mt-2 text-sm text-black ">
-                            Marcus specializes in transformative color, from subtle balayage to vibrant, creative hues.
-                        </p>
-                    </div>
-                </div>
-
-                <div
-                    class="group flex flex-col overflow-hidden rounded-xl bg-background-light/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-white/5">
-                    <img class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb8M1hyVS0Hz5CggzzOIqVCZTnipUHc5ex-r4bA1ooFDEPfp9fVKwjMKWOUmwSRs1tmU9L6ttf_DzsbkxuQDv29U4A7yhpBGiuDTnCISKWs8-SnmWkGsUKNlGfRerB7OPDaXzcaO_1GnTHSV9LHjDQR5UrMLG_17vj2G30MinsALsVQef_QMdQ54UNetvUcgga4XQkYkIuzegCkFBnquyMRi7Rnu3QxLwzD3IuJsX7-Yr3DxsNEGnif8q9nHK4lxKHHyhEBqdOiII" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-stone-900 dark:text-white">Emily Carter</h3>
-                        <p class="text-sm font-medium text-primary">Creative Stylist</p>
-                        <p class="mt-2 text-sm text-stone-700 ">
-                            Emily excels in precision cuts and modern styling, bringing a fresh artistic perspective.
-                        </p>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- CTA -->
-            <section class="fade-in py-16">
-                <h2 class="mb-4 text-2xl font-bold text-stone-900 ">
-                    Ready for a Transformation?
-                </h2>
-                <p class="mb-8 max-w-xl text-base text-stone-700 ">
-                    Let our talented team bring your vision to life. Book your next appointment and experience the
-                    difference.
-                </p>
-                <button
-                    class="w-full max-w-sm rounded-xl bg-primary py-3 text-base font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                    Book an Appointment
-                </button>
-            </section>
-
-        </main>
-    </div>
-
-
-    <footer class="bg-gray-900 text-gray-200 mt-10 border-t border-gray-700 px-10 py-10">
-        <div class="max-w-7xl mx-auto px-4 py-10 ">
-            <div class="flex flex-col md:flex-row justify-center md:justify-between items-start gap-10 md:gap-20">
-
-                <!-- About Section -->
-
-
-                <!-- Quick Links -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Services</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Pricing</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+                    <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="index.html" class="hover:text-primary-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-primary-400 transition-colors duration-300">Services</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary-400 transition-colors duration-300">Portfolio</a></li>
+                        <li><a href="about.html" class="hover:text-primary-400 transition-colors duration-300">About</a></li>
+                        <li><a href="contact.html" class="hover:text-primary-400 transition-colors duration-300">Contact</a></li>
                     </ul>
                 </div>
-
-                <!-- Contact Info -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
-                    <ul class="space-y-3 text-sm">
-                        <!-- Location -->
-                        <li class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
-                                </svg>
-                            </span>
-                            Kitgum stage, Mubarak Plaza, Lira
+                    <h3 class="text-lg font-bold mb-4 text-white">Contact Info</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">📍</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Location</div>
+                                <div class="text-sm">Kitgum stage, Mubarak Plaza, Lira</div>
+                            </div>
                         </li>
-
-                        <!-- Phone -->
-                        <li class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 6.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.32.07.71-.21 1.11l-2.43 2.3z" />
-                                </svg>
-                            </span>
-                            +256 700 123 456
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">📞</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Phone</div>
+                                <div class="text-sm">+256 700 123 456</div>
+                            </div>
                         </li>
-
-                        <!-- Email -->
-                        <li class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                </svg>
-                            </span>
-                            info@boscosalon.ug
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">✉️</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Email</div>
+                                <div class="text-sm">info@boscosalon.ug</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
-
-
-                <!-- Newsletter / Follow Us -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Subscribe & Follow Us</h3>
-
-                    <!-- Newsletter Input -->
-                    <form class="flex flex-col sm:flex-row gap-2 mb-4 max-w-md mx-auto">
-                        <!-- Email input -->
-                        <input type="email" placeholder="Your email"
-                            class="flex-1 px-4 py-2 rounded sm:rounded-r-none text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-
-                        <!-- Subscribe button -->
-                        <button type="submit"
-                            class="px-4 py-2 bg-blue-600 text-white rounded sm:rounded-l-none hover:bg-blue-700 transition-colors duration-200">
-                            Subscribe
-                        </button>
-                    </form>
-
-
-                    <!-- Social Icons -->
-
-                </div>
             </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
-            &copy; 2025 Bosco Unisex Salon. All rights reserved.
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Bosco Unisex Salon. All rights reserved. | Developed by <a href="https://hakateq.com" class="text-primary-400 hover:text-primary-300 transition-colors">Hakateq Solutions Limited</a></p>
+            </div>
         </div>
     </footer>
-
-    <script>
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
-
-        document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-    </script>
 </body>
-
 </html>

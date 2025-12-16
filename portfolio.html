@@ -1,408 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Bosco Unisex Salon — Portfolio</title>
-
-    <!-- Material Symbols & Tailwind CDN -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portfolio - Bosco Unisex Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        /* Elegant minimal accent */
-        :root {
-            --gold: #D4AF37;
-            --bg: #ffffff;
-            --muted: #6b7280;
-        }
-
-        /* Lightbox */
-        .lightbox-bg {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Before/after slider */
-        .ba-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
-        }
-
-        .ba-before,
-        .ba-after {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ba-after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            overflow: hidden;
-        }
-
-        .ba-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 3px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.6);
-            z-index: 20;
-        }
-
-        .ba-handle:after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ba-handle-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: block;
-            margin: auto;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width:640px) {
-            .ba-handle {
-                height: 100%;
-                width: 2px;
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#ec4899', 600: '#db2777', 700: '#be185d' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
             }
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Make material symbols respect color */
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+    </script>
+    <style>
+        .gradient-text { background: linear-gradient(135deg, #ec4899, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .luxury-shadow { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
     </style>
 </head>
-
-<body class="bg-white text-gray-800 antialiased">
-
+<body class="bg-gradient-to-br from-gray-50 via-white to-pink-50">
     <!-- Header -->
-    <header class="sticky top-0 z-10 ">
-
+    <header class="sticky top-0 z-50">
         <nav class="bg-black text-white">
             <div class="container mx-auto flex items-center justify-between py-4 px-6">
-
-                <!-- Brand -->
-
-                <a href="index.html" class="flex items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center">
-                        <span class="text-white font-bold">B</span>
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-primary-500 to-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-xl">B</span>
                     </div>
                     <div>
-                        <div class="text-lg font-semibold">Bosco Unisex Salon</div>
-
+                        <div class="text-xl font-bold text-white">Bosco Unisex Salon</div>
+                        <div class="text-xs text-gray-300">Premium Beauty Experience</div>
                     </div>
                 </a>
-
-                <!-- Mobile Toggle Button -->
-                <button class="lg:hidden text-white focus:outline-none"
-                    onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-
-                <!-- Desktop Menu -->
-                <ul class="hidden lg:flex space-x-8 text-sm">
-                    <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
-                    <li><a class="hover:text-gray-300" href="about.html">About</a></li>
-                    <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
-                    <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
-                    <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
-                    <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
+                <ul class="hidden lg:flex space-x-8 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="index.html">Home</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="about.html">About</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="services.html">Services</a></li>
+                    <li><a class="text-primary-400 font-semibold" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="appointment.html">Appointment</a></li>
+                    <li><a class="text-white hover:text-primary-400 transition-colors duration-300" href="contact.html">Contact</a></li>
                 </ul>
-
-                <!-- WhatsApp Button (Desktop) -->
-                <a href="https://wa.me/0786650378"
-                    class="hidden lg:inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold">
-                    WhatsApp
-                </a>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="lg:hidden hidden bg-black text-white">
-                <ul class="flex flex-col space-y-4 py-4 px-6 text-lg">
-                    <li><a class="hover:text-gray-300" href="index.html">Home</a></li>
-                    <li><a class="hover:text-gray-300" href="about.html">About</a></li>
-                    <li><a class="hover:text-gray-300" href="services.html">Services</a></li>
-                    <li><a class="hover:text-gray-300" href="portfolio.html">Portfolio</a></li>
-                    <li><a class="hover:text-gray-300" href="appointment.html">Appointment</a></li>
-                    <li><a class="hover:text-gray-300" href="contact.html">Contact</a></li>
-                </ul>
-                <!-- WhatsApp Button (Mobile) -->
-                <div class="px-6 pb-4">
-                    <a href="https://wa.me/0786650378"
-                        class="block bg-green-500 hover:bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold">
-                        WhatsApp
-                    </a>
-                </div>
+                <div></div>
             </div>
         </nav>
-
     </header>
-      <section id="book-now-section">
-                <div class="@container">
-                    <div class="@[480px]:p-4">
-                        <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4 text-center"
-                            data-alt="Stylish interior of a modern salon with ambient lighting"
-                            style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("images/pexels-valeriya-696287.jpg");'>
-                              <div class="lg:w-1/2 text-center lg:text-left">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Our Work Speaks Style</h1>
-                <p class="text-white mb-6 max-w-xl">
-                    Explore our curated gallery of haircuts, colour transformations and beauty services. Each look is
-                    crafted by our expert stylists to match your personality and lifestyle.
-                </p>
-                <div class="flex justify-center lg:justify-start gap-4">
-                    <a href="#gallery"
-                        class="inline-flex items-center gap-2 px-6 py-3 border border-black text-black rounded-md hover:bg-black hover:text-white transition">
-                        <span class="material-symbols-outlined">photo_library</span> View Gallery
-                    </a>
-                    <a href="appointment.html"
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-md hover:bg-white hover:text-black border border-black transition">
-                        <span class="material-symbols-outlined">calendar_month</span> Book Now
-                    </a>
-                </div>
-            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-    <!-- HERO -->
-    <!-- Filters -->
-    <section class="bg-white pt-8 pb-8">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-center">
-                <div id="filters" class="inline-flex items-center gap-3 flex-wrap">
-                    <button data-filter="all"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm font-medium bg-black text-white">All</button>
-                    <button data-filter="haircut"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Haircuts</button>
-                    <button data-filter="color"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Colour</button>
-                    <button data-filter="braids"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Braids</button>
-                    <button data-filter="nails"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Nails</button>
-                    <button data-filter="beard"
-                        class="filter-btn px-4 py-2 rounded-md border border-gray-200 text-sm">Barber</button>
-                </div>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-6">Our Work Speaks Style</h1>
+            <p class="text-xl text-primary-100 max-w-2xl mx-auto mb-8">Explore our curated gallery of haircuts, color transformations and beauty services</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='#gallery'" class="px-8 py-4 bg-white text-primary-700 font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    View Gallery
+                </button>
+                <button onclick="window.location.href='appointment.html'" class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-primary-700 transition-all duration-300">
+                    Book Now
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Gallery -->
-    <section id="gallery" class="py-12 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card (repeatable) -->
-                <!-- Example items - replace src with your images -->
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="haircut">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop"
-                        aria-label="Open image">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Classic Bob</h4>
-                        <p class="text-sm text-gray-500">Precision cut with soft layers.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="color">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Warm Balayage</h4>
-                        <p class="text-sm text-gray-500">Soft blend and natural finish.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="braids">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1601597115412-2b6ef2d1b6c9?q=80&w=1200&auto=format&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1601597115412-2b6ef2d1b6c9?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Box Braids</h4>
-                        <p class="text-sm text-gray-500">Long-lasting protective style.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="nails">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Minimal Mani</h4>
-                        <p class="text-sm text-gray-500">Neutral tones and neat finish.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="beard">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1598136497757-ee8a7d4c0d3c?q=80&w=1200&auto=format&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1598136497757-ee8a7d4c0d3c?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Precision Fade & Beard</h4>
-                        <p class="text-sm text-gray-500">Sharp lines and tidy finish.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item rounded-xl overflow-hidden bg-white shadow-sm" data-category="color">
-                    <button class="w-full h-64 block"
-                        data-src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </button>
-                    <div class="p-4">
-                        <h4 class="font-semibold mb-1">Platinum Tone</h4>
-                        <p class="text-sm text-gray-500">High-lift colour services.</p>
-                    </div>
-                </div>
-
+    <section id="gallery" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6 gradient-text">Our Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Each look is crafted by our expert stylists to match your personality and lifestyle</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Before / After -->
-    <section id="beforeafter" class="py-12 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-6">Transformations — Before & After</h2>
-
-            <div class="ba-container h-[420px] mx-auto max-w-4xl relative">
-                <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1600&auto=format&fit=crop"
-                    class="ba-before w-full h-full" alt="Before">
-                <div class="ba-after" id="baAfter" style="width:50%;">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600&auto=format&fit=crop"
-                        class="w-full h-full" alt="After">
-                </div>
-                <div class="ba-handle" id="baHandle" role="slider" aria-valuemin="0" aria-valuemax="100"
-                    aria-valuenow="50">
-                    <span class="ba-handle-dot"></span>
-                </div>
-            </div>
-
-            <p class="text-center text-gray-500 mt-4">Drag the handle or click images to compare before and after
-                results.</p>
-        </div>
-    </section>
-
-    <!-- Stylists / Team -->
-    <section id="team" class="py-12 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-6">Our Stylists</h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Stylist card -->
-                <div class="bg-white rounded-xl shadow p-6 text-center">
-                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop"
-                            alt="Stylist" class="w-full h-full object-cover">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/head.png" alt="Classic Bob" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-semibold">Irene</h3>
-                    <p class="text-sm text-gray-500">Senior Stylist — Colour Specialist</p>
-                    <p class="mt-3 text-xs text-gray-400">10+ years experience</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow p-6 text-center">
-                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1545996124-0b2f8c6a58f1?q=80&w=800&auto=format&fit=crop"
-                            alt="Stylist" class="w-full h-full object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Classic Bob</h4>
+                        <p class="text-gray-600 text-sm">Precision cut with soft layers</p>
                     </div>
-                    <h3 class="font-semibold">Samuel</h3>
-                    <p class="text-sm text-gray-500">Barber — Fade Expert</p>
-                    <p class="mt-3 text-xs text-gray-400">8 years experience</p>
                 </div>
-
-                <div class="bg-white rounded-xl shadow p-6 text-center">
-                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop"
-                            alt="Stylist" class="w-full h-full object-cover">
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/hair.png" alt="Warm Balayage" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-semibold">Maya</h3>
-                    <p class="text-sm text-gray-500">Nail Artist & Aesthetician</p>
-                    <p class="mt-3 text-xs text-gray-400">6 years experience</p>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Warm Balayage</h4>
+                        <p class="text-gray-600 text-sm">Soft blend and natural finish</p>
+                    </div>
                 </div>
-
-                <div class="bg-white rounded-xl shadow p-6 text-center">
-                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1545996124-0b2f8c6a58f1?q=80&w=800&auto=format&fit=crop"
-                            alt="Stylist" class="w-full h-full object-cover">
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/nails.webp" alt="Nail Art" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-semibold">Daniel</h3>
-                    <p class="text-sm text-gray-500">Stylist — Texture Specialist</p>
-                    <p class="mt-3 text-xs text-gray-400">7 years experience</p>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Nail Art</h4>
+                        <p class="text-gray-600 text-sm">Creative designs and premium styling</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/massage.png" alt="Facial Treatment" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Facial Treatment</h4>
+                        <p class="text-gray-600 text-sm">Rejuvenating skincare services</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/skin.jpg" alt="Makeup Service" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Makeup Service</h4>
+                        <p class="text-gray-600 text-sm">Professional makeup for events</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl overflow-hidden luxury-shadow hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/pexels-valeriya-696287.jpg" alt="Complete Makeover" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-2">Complete Makeover</h4>
+                        <p class="text-gray-600 text-sm">Full transformation package</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Snapshot -->
-    <section id="pricing" class="py-12 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-6">Pricing Snapshot</h2>
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6 gradient-text">Our Expert Stylists</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Meet the talented team behind every beautiful transformation</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="images/qt.avif" alt="Irene" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold mb-1">Irene</h3>
+                    <p class="text-sm text-gray-500 mb-2">Senior Stylist — Color Specialist</p>
+                    <p class="text-xs text-gray-400">10+ years experience</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="images/hairsalo.jpg" alt="Samuel" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold mb-1">Samuel</h3>
+                    <p class="text-sm text-gray-500 mb-2">Barber — Fade Expert</p>
+                    <p class="text-xs text-gray-400">8 years experience</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="images/nails.webp" alt="Maya" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold mb-1">Maya</h3>
+                    <p class="text-sm text-gray-500 mb-2">Nail Artist & Aesthetician</p>
+                    <p class="text-xs text-gray-400">6 years experience</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="images/pexels-valeriya-696287.jpg" alt="Daniel" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold mb-1">Daniel</h3>
+                    <p class="text-sm text-gray-500 mb-2">Stylist — Texture Specialist</p>
+                    <p class="text-xs text-gray-400">7 years experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="bg-gray-50 rounded-xl p-6 text-center">
-                    <h3 class="font-semibold mb-2">Haircuts</h3>
-                    <p class="text-gray-500 mb-4">From UGX 15,000</p>
+    <!-- Pricing -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6 gradient-text">Pricing Snapshot</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Transparent pricing for our premium services</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <h3 class="font-bold mb-2 text-xl">Haircuts</h3>
+                    <p class="text-gray-500 mb-4 text-lg">From UGX 15,000</p>
                     <ul class="text-sm text-gray-400 space-y-1">
                         <li>Men's Cut</li>
                         <li>Women's Cut</li>
                         <li>Kids</li>
                     </ul>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center">
-                    <h3 class="font-semibold mb-2">Colour</h3>
-                    <p class="text-gray-500 mb-4">From UGX 50,000</p>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <h3 class="font-bold mb-2 text-xl">Color</h3>
+                    <p class="text-gray-500 mb-4 text-lg">From UGX 50,000</p>
                     <ul class="text-sm text-gray-400 space-y-1">
                         <li>Highlights</li>
                         <li>Balayage</li>
-                        <li>Colour Correction</li>
+                        <li>Color Correction</li>
                     </ul>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center">
-                    <h3 class="font-semibold mb-2">Beauty</h3>
-                    <p class="text-gray-500 mb-4">From UGX 20,000</p>
+                <div class="bg-white rounded-3xl p-8 luxury-shadow text-center">
+                    <h3 class="font-bold mb-2 text-xl">Beauty</h3>
+                    <p class="text-gray-500 mb-4 text-lg">From UGX 20,000</p>
                     <ul class="text-sm text-gray-400 space-y-1">
                         <li>Manicure</li>
                         <li>Pedicure</li>
@@ -412,196 +215,81 @@
             </div>
         </div>
     </section>
-    
-    <!-- CTA -->
-    <section id="contact" class="py-12 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="bg-black text-white rounded-2xl p-10 text-center">
-                <h2 class="text-2xl font-bold mb-3">Ready for your transformation?</h2>
-                <p class="text-gray-300 mb-6">Book an appointment with our expert stylists today.</p>
-                <a href="appointment.html"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-md hover:bg-transparent hover:text-white border border-white transition">Book
-                    Appointment</a>
-            </div>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-6">Ready for Your Transformation?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">Book an appointment with our expert stylists today</p>
+            <button onclick="window.location.href='appointment.html'" class="px-8 py-4 bg-white text-primary-700 font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                Book Appointment
+            </button>
         </div>
     </section>
 
     <!-- Footer -->
-   
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 hidden items-center justify-center lightbox-bg z-50">
-        <button id="lbClose" class="absolute top-6 right-6 text-white text-2xl p-2 rounded-md">✕</button>
-        <div class="max-w-4xl w-full mx-4">
-            <img id="lbImage" src="" alt="Large view" class="w-full rounded-xl shadow-2xl object-contain">
-        </div>
-    </div>
-
-    <footer class="bg-gray-900 text-gray-200 mt-10 border-t border-gray-700 px-10 py-10">
-            <div class="max-w-7xl mx-auto px-4 py-10 ">
-                <div class="flex flex-col md:flex-row justify-center md:justify-between items-start gap-10 md:gap-20">
-
-                    <!-- About Section -->
-
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
-                        <ul class="space-y-2 text-gray-400 text-sm">
-                            <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                            <li><a href="#" class="hover:text-blue-500">Services</a></li>
-                            <li><a href="#" class="hover:text-blue-500">Pricing</a></li>
-                            <li><a href="#" class="hover:text-blue-500">Contact</a></li>
-                        </ul>
+    <footer class="bg-gray-900 text-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-primary-500 to-gold-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">B</span>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-white">Bosco Unisex Salon</div>
+                            <div class="text-sm text-gray-400">Premium Beauty Experience</div>
+                        </div>
                     </div>
-
-                    <!-- Contact Info -->
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
-                        <ul class="space-y-3 text-sm">
-                            <!-- Location -->
-                            <li class="flex items-center gap-3">
-                                <span
-                                    class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
-                                    </svg>
-                                </span>
-                                Kitgum stage, Mubarak Plaza, Lira
-                            </li>
-
-                            <!-- Phone -->
-                            <li class="flex items-center gap-3">
-                                <span
-                                    class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 6.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.32.07.71-.21 1.11l-2.43 2.3z" />
-                                    </svg>
-                                </span>
-                                +256 700 123 456
-                            </li>
-
-                            <!-- Email -->
-                            <li class="flex items-center gap-3">
-                                <span
-                                    class="flex items-center justify-center w-8 h-8 bg-gray-500 text-white rounded-full">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                    </svg>
-                                </span>
-                                info@boscosalon.ug
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <!-- Newsletter / Follow Us -->
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4 text-white">Subscribe & Follow Us</h3>
-
-                        <!-- Newsletter Input -->
-                        <form class="flex flex-col sm:flex-row gap-2 mb-4">
-                            <input type="email" placeholder="Your email"
-                                class="w-full sm:flex-1 px-3 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button type="submit"
-                                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">
-                                Subscribe
-                            </button>
-                        </form>
-
-                        <!-- Social Icons -->
-
-                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Transform your look with our premium salon services. Where artistry meets luxury in the heart of Lira.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="index.html" class="hover:text-primary-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-primary-400 transition-colors duration-300">Services</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary-400 transition-colors duration-300">Portfolio</a></li>
+                        <li><a href="about.html" class="hover:text-primary-400 transition-colors duration-300">About</a></li>
+                        <li><a href="contact.html" class="hover:text-primary-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-white">Contact Info</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">📍</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Location</div>
+                                <div class="text-sm">Kitgum stage, Mubarak Plaza, Lira</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">📞</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Phone</div>
+                                <div class="text-sm">+256 700 123 456</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-white">✉️</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Email</div>
+                                <div class="text-sm">info@boscosalon.ug</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Bottom Footer -->
-            <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
-                &copy; 2025 Bosco Unisex Salon. All rights reserved.
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Bosco Unisex Salon. All rights reserved. | Developed by <a href="https://hakateq.com" class="text-primary-400 hover:text-primary-300 transition-colors">Hakateq Solutions Limited</a></p>
             </div>
-        </footer>
-
-
-    <script>
-        // year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Filters
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-black', 'text-white'));
-                btn.classList.add('bg-black', 'text-white');
-                const cat = btn.getAttribute('data-filter');
-                items.forEach(i => {
-                    if (cat === 'all' || i.dataset.category === cat) i.style.display = 'block';
-                    else i.style.display = 'none';
-                });
-            });
-        });
-
-        // Lightbox
-        const lb = document.getElementById('lightbox');
-        const lbImage = document.getElementById('lbImage');
-        const lbClose = document.getElementById('lbClose');
-
-        document.querySelectorAll('.portfolio-item button').forEach(b => {
-            b.addEventListener('click', (e) => {
-                const src = b.getAttribute('data-src') || b.querySelector('img')?.src;
-                lbImage.src = src;
-                lb.classList.remove('hidden');
-                lb.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        lbClose.addEventListener('click', closeLb);
-        lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
-        function closeLb() { lb.classList.add('hidden'); lb.classList.remove('flex'); document.body.style.overflow = ''; lbImage.src = ''; }
-
-        // Before/After slider
-        (function () {
-            const container = document.querySelector('.ba-container');
-            if (!container) return;
-            const after = document.getElementById('baAfter');
-            const handle = document.getElementById('baHandle');
-
-            let dragging = false;
-            const startX = e => e.touches ? e.touches[0].clientX : e.clientX;
-
-            const onMove = (clientX) => {
-                const rect = container.getBoundingClientRect();
-                let pct = (clientX - rect.left) / rect.width;
-                pct = Math.max(0, Math.min(1, pct));
-                after.style.width = (pct * 100) + '%';
-                handle.style.left = (pct * 100) + '%';
-            };
-
-            handle.addEventListener('mousedown', () => dragging = true);
-            window.addEventListener('mouseup', () => dragging = false);
-            window.addEventListener('mousemove', (e) => { if (dragging) onMove(e.clientX); });
-
-            handle.addEventListener('touchstart', () => dragging = true);
-            window.addEventListener('touchend', () => dragging = false);
-            window.addEventListener('touchmove', (e) => { if (dragging) onMove(e.touches[0].clientX); });
-
-            // click to move
-            container.addEventListener('click', (e) => onMove(startX(e)));
-        })();
-
-        // Mobile menu (minimal)
-        const menuBtn = document.getElementById('menuBtn');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                alert('Open mobile menu — integrate navigation as needed.');
-            });
-        }
-    </script>
+        </div>
+    </footer>
 </body>
-
 </html>
